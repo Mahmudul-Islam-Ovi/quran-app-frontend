@@ -41,7 +41,7 @@ export default function Navbar() {
                         <SheetContent side="top" className="h-screen max-h-[90vh] bg-zinc-950 border-b">
                             <div className="max-w-2xl mx-auto mt-10">
                                 <Input
-                                    placeholder="Search ayahs in English translation..."
+                                    placeholder="Search ayahs..."
                                     value={query}
                                     onChange={(e) => {
                                         setQuery(e.target.value);

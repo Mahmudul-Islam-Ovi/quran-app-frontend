@@ -3,10 +3,10 @@
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Button } from '@/components/ui/button';
 import { Slider } from '@/components/ui/slider';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Label } from '@/components/ui/label';
 import { Settings as SettingsIcon } from 'lucide-react';
 import { useSettings } from './providers/settings-provider';
+import { cn } from '@/lib/utils';
 
 export default function SettingsSheet() {
     const { settings, updateSettings } = useSettings();
@@ -21,20 +21,34 @@ export default function SettingsSheet() {
                     <h2 className="text-2xl font-bold rgb-text mb-6">Reading Settings</h2>
 
                     {/* Arabic Font */}
-                    <div className="space-y-3">
-                        <Label className="text-sm font-medium text-zinc-300">Arabic Font</Label>
-                        <Select
-                            value={settings.arabicFont}
-                            onValueChange={(v) => updateSettings({ arabicFont: v as 'amiri' | 'noto' })}
-                        >
-                            <SelectTrigger className="glass-panel border-white/10 focus:ring-emerald-500/50">
-                                <SelectValue />
-                            </SelectTrigger>
-                            <SelectContent className="glass-panel bg-zinc-900 border-white/10">
-                                <SelectItem value="amiri">Amiri (Classic Quran)</SelectItem>
-                                <SelectItem value="noto">Noto Naskh Arabic (Modern)</SelectItem>
-                            </SelectContent>
-                        </Select>
+                    <div className="space-y-4">
+                        <Label className="text-sm font-medium text-zinc-300">Arabic Font Style</Label>
+                        <div className="grid grid-cols-2 gap-3">
+                            <button
+                                onClick={() => updateSettings({ arabicFont: 'amiri' })}
+                                className={cn(
+                                    "flex flex-col items-center justify-center p-4 rounded-xl border transition-all duration-300",
+                                    settings.arabicFont === 'amiri'
+                                        ? "border-emerald-500 bg-emerald-500/10 text-emerald-400 shadow-[0_0_15px_rgba(16,185,129,0.15)] scale-[1.02]"
+                                        : "border-white/10 bg-zinc-900/50 text-zinc-400 hover:bg-zinc-800 hover:border-emerald-500/30"
+                                )}
+                            >
+                                <span className="text-3xl mb-3 arabic-amiri mt-2">بِسْمِ اللَّهِ</span>
+                                <span className="text-xs font-medium uppercase tracking-wider">Amiri</span>
+                            </button>
+                            <button
+                                onClick={() => updateSettings({ arabicFont: 'noto' })}
+                                className={cn(
+                                    "flex flex-col items-center justify-center p-4 rounded-xl border transition-all duration-300",
+                                    settings.arabicFont === 'noto'
+                                        ? "border-emerald-500 bg-emerald-500/10 text-emerald-400 shadow-[0_0_15px_rgba(16,185,129,0.15)] scale-[1.02]"
+                                        : "border-white/10 bg-zinc-900/50 text-zinc-400 hover:bg-zinc-800 hover:border-emerald-500/30"
+                                )}
+                            >
+                                <span className="text-3xl mb-3 arabic-noto mt-2">بِسْمِ اللَّهِ</span>
+                                <span className="text-xs font-medium uppercase tracking-wider">Noto Naskh</span>
+                            </button>
+                        </div>
                     </div>
 
                     {/* Arabic Size */}
@@ -49,7 +63,7 @@ export default function SettingsSheet() {
                             step={1}
                             value={[settings.arabicSize]}
                             onValueChange={(v) => updateSettings({ arabicSize: Array.isArray(v) ? v[0] : (v as number) })}
-                            className="py-2"
+                            className="py-4"
                         />
                     </div>
 
@@ -65,7 +79,7 @@ export default function SettingsSheet() {
                             step={1}
                             value={[settings.translationSize]}
                             onValueChange={(v) => updateSettings({ translationSize: Array.isArray(v) ? v[0] : (v as number) })}
-                            className="py-2"
+                            className="py-4"
                         />
                     </div>
                 </div>

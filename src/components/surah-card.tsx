@@ -14,7 +14,7 @@ export default function SurahCard({ surah, index = 0 }: { surah: Surah; index?: 
             className="h-full"
         >
             <Link href={`/surah/${surah.id}`} className="block h-full">
-                <div className="glass-panel rgb-hover-glow rounded-xl p-6 group h-full flex flex-col justify-between cursor-pointer">
+                <div className="glass-panel rgb-hover-glow rounded-xl p-6 group h-full flex flex-col justify-between cursor-pointer ">
                     <div className="flex justify-between items-start">
                         <div>
                             <div className="text-emerald-400 font-mono text-3xl font-light mb-1">

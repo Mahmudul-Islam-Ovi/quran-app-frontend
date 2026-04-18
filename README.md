@@ -23,4 +23,6 @@ A beautiful, responsive, and modern Quran reader with Arabic text and English tr
 - **Language**: TypeScript
 - **Fonts**: Amiri & Noto Naskh Arabic (Google Fonts)
 
+Live link of project- > https://quran-app-frontend-fawn.vercel.app/
+
 

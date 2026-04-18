@@ -26,7 +26,8 @@ export default function AyahCard({ ayah, number }: { ayah: Ayah; number: number 
 
             {/* Arabic */}
             <p
-                className={`arabic-text text-[var(--arabic-font-size)] ${settings.arabicFont === 'amiri' ? 'arabic-amiri' : 'arabic-noto'} leading-loose mb-10 text-emerald-50 drop-shadow-sm`}
+                className={`arabic-text ${settings.arabicFont === 'amiri' ? 'arabic-amiri' : 'arabic-noto'} leading-loose mb-10 text-emerald-50 drop-shadow-sm`}
+                style={{ fontSize: `var(--arabic-font-size)` }}
             >
                 {ayah.text}
             </p>
